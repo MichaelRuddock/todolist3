@@ -1,0 +1,64 @@
+/* Make the app purple like its icon */
+body {
+  background: #9a75ad;
+  color: #ffffff;    
+  font-family: 'Helvetica', Arial;
+  font-size: 20px;
+  text-align: center;
+}
+
+/* Overside H1 to act as a sort of Logo */
+h4 {
+  color: white;
+  font-family: 'Helvetica', Arial;
+  font-size: 40px;    
+  text-align: center;
+  text-shadow: 5px 5px 5px purple;
+}
+
+/* Make the Table responsive */
+table {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 20px;
+  border:1px solid #fff;
+  border-collapse:collapse;
+  width:80%;
+  margin-left:auto; 
+  margin-right:auto;
+  text-align: center;
+}
+table tr td{
+  border:1px solid #fff;
+  padding:10px;
+}
+
+/* Let the user know that the Font Awesome Icons are clickable */
+table tr td span{
+  cursor:pointer;
+}
+
+/* Zebra striping to make the table easier on the eye */
+tr:nth-of-type(odd) { 
+  background: #BBA3C8; 
+}
+
+/* Make the Button Stand out on the page */
+.btn-primary {
+    background-color: purple; 
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+/* Invert the button colours on hover so the user knows its clickable */
+.btn-primary:hover {
+    background-color: #ffffff; 
+    color: purple;
+    cursor:pointer;
+}

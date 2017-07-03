@@ -1,0 +1,101 @@
+<!-- -------------------------------------------------------------------------- -->
+<!-- Program:       index.html                                                  -->
+<!-- Author:        Michael Ruddock                                             -->
+<!-- Date:          3rd July 2017                                               -->
+<!-- Version:       1.0                                                         -->
+<!-- Assessment:    MWA #2                                                      -->
+<!-- Description:   The starting point of my MVC SPA                            -->
+<!-- -------------------------------------------------------------------------- -->
+
+<!DOCTYPE html>
+<html lang="en"> <!-- English -->
+<head>
+  <!-- Let the browser know the character set -->  
+  <meta charset="utf-8"/>
+    
+  <!-- Set the viewport size as we're using a mobile device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+      
+  <!-- Page Title -->  
+  <title>MWA Ass 2 - TO DO LIST</title>        
+            
+  <!-- Font Awesome from CDN - for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+  <!-- My Bespoke CSS -->
+  <link rel="stylesheet" href="css/style.css">      
+</head>      
+    
+<!-- start of Angular App on body to improve speed -->    
+<body ng-app="App">
+        
+<div ng-controller="CrudCtrl">
+
+  <h4><span>{{ remaining() }} of {{ Profiles.length }} TO DO </span></h4>
+    
+  <table>
+  <!-- Table Column Headings -->    
+  <tr>              
+    <td>Priority</td>  
+    <td>Description</td>
+    <td>Actions</td>        
+  </tr>
+
+  <!-- Dynamically Add/Remove Rows and Actions from the View based on User Actions -->    
+  <tr ng-repeat="profile in Profiles">    
+    <!-- INSERT --> <!-- If user clicks the Add button these two fields are shown -->
+    <td>              
+      <!-- Field #1 = Item Priority -->    
+      <input type="text" 
+             size="15" 
+             ng-model="profile.priority" 
+             ng-show="profile.editable"
+             placeholder="Enter Priority"
+             required>
+      <span ng-hide="profile.editable">{{ profile.priority }}</span> 
+    </td>
+    <td>
+      <!-- Field #2 = Item Description -->    
+      <input type="text" 
+             size="15" 
+             ng-model="profile.description" 
+             ng-show="profile.editable"
+             placeholder="Enter Item To Do"
+             required>        
+      <span ng-hide="profile.editable">{{ profile.description }}</span>
+    </td>
+    <td>   
+      <!-- EDIT -->  <!-- This is hidden until a row is added by the user -->  
+      <span ng-click="edit($index)" ng-hide="profile.editable">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+      </span>
+      <!-- SAVE -->  <!-- This is hidden when a row has been added -->  
+      <span ng-click="save($index)" ng-show="profile.editable">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      </span>
+      <!-- DELETE --> <!-- This is always shown, its always an option -->   
+      <span ng-click="delete($index)">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+      </span>        
+    </td>
+  </tr>
+  </table>
+  <!-- Button to Add a new TO DO item -->          
+  <form ng-submit="add()">                 
+    <input class="btn-primary" type="submit" value="Add New Item">       
+  </form>   
+</div>
+    
+<!-- Include JavaScript at the end for speed optimisation of the App -->    
+    
+<!-- 1st include Local Minified Angular JavaScript -->      
+<script src="js/angular.min.js"></script>
+      
+<!-- 2nd include My Bespoke JavaScript -->      
+<script src="js/script.js"></script>      
+    
+<!-- 3rd include Phonegap.js -->
+<script src="phonegap.js">
+      
+</body>  
+</html>
